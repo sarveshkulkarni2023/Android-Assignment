@@ -1,0 +1,41 @@
+// 1. Function to print the length of a nullable string
+fun printLength(str: String?) {
+    // Using the safe call (?.) to check for null
+    val length = str?.length ?: "String is null"
+    println("Length: $length")
+}
+
+// 2. Main function to demonstrate calling printLength with a nullable string
+fun main() {
+    val nullableString: String? = "Hello, Kotlin!"
+    val nullString: String? = null
+
+    // Case when the string is not null
+    println("Non-null string:")
+    printLength(nullableString)
+
+    // Case when the string is null
+    println("Null string:")
+    printLength(nullString)
+
+    // Working with the Person data class
+    val personWithAge = Person("Alice", 25)
+    val personWithoutAge = Person("Bob", null)
+
+    // Demonstrate printing the age
+    println("Person with age:")
+    printAge(personWithAge)
+
+    println("Person without age:")
+    printAge(personWithoutAge)
+}
+
+// 3. Data class Person with nullable age
+data class Person(val name: String, val age: Int?)
+
+// 4. Function to print the person's age only if it's not null
+fun printAge(person: Person) {
+    // Using the safe call and Elvis operator to handle null
+    val age = person.age ?: "Age not available"
+    println("${person.name}'s age: $age")
+}
